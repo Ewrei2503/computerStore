@@ -4,6 +4,7 @@
 <div>
     <@l.logout />
 </div>
+    <a href="/user"> User List</a>
 <div>
     <form method="post">
         <input type="hidden" name="_csrf" value = "${_csrf.token}"/>
@@ -12,7 +13,7 @@
         <button type="submit">Добавить</button>
     </form>
     <form method="get" action="/main">
-        <input type="text" name="filter" placeholder="Введите фильтр" value="${filter}">
+        <input type="text" name="filter" placeholder="Введите фильтр" value="${filter?ifExists}">
         <button type="submit">Отфильтровать</button>
     </form>
     <a href="/registration"> Add new user</a>
