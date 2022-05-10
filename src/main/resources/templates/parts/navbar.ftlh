@@ -23,9 +23,11 @@
 
         </ul>
 
-        <div class="navbar-text mr-3">${name}</div>
-        <#if name != "">
-            <@l.logout/>
+        <#if user??>
+            <a class="nav-link mr-3" href="/user/profile">${name}</a>
+            <#if name != "">
+                <@l.logout/>
+            </#if>
         </#if>
     </div>
 </nav>
