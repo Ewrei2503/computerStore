@@ -1,31 +1,69 @@
 <#import "parts/common.ftlh" as c>
-<#import "parts/login.ftlh" as l>
 <@c.page>
 <div>
-    <@l.logout />
-</div>
-    <a href="/user"> User List</a>
-<div>
-    <form method="post">
-        <input type="hidden" name="_csrf" value = "${_csrf.token}"/>
-        <input type="text" name="text" placeholder="Введите сообщение">
-        <input type="text" name="tag" placeholder="Тэг">
-        <button type="submit">Добавить</button>
-    </form>
-    <form method="get" action="/main">
-        <input type="text" name="filter" placeholder="Введите фильтр" value="${filter?ifExists}">
-        <button type="submit">Отфильтровать</button>
-    </form>
-    <a href="/registration"> Add new user</a>
-
-</div>
-<#list messages as message>
-    <div>
-        <b>${message.id}</b>
-        <span>${message.text}</span>
-        <i>${message.tag}</i>
-        <strong>${message.authorName}</strong>
+    <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Создать сообщение</a>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Работа с данными</button>
+    </p>
+    <div class="row">
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body">
+                    <form method="post">
+                        <input type="hidden" name="_csrf" value = "${_csrf.token}"/>
+                        <div class="form-group">
+                            <label for="inputTag">Тема сообщения</label>
+                            <input type="text" name="tag" class="form-control" id="inputTag" placeholder="Введите тему сообщения">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputMail">Сообщение</label>
+                            <input type="text" name="text" class="form-control" id="inputMail" aria-describedby="mailHelp" placeholder="Введите сообщение">
+                            <small id="mailHelp" class="form-text text-muted">Сообщение длинной не более 2048 символов.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddressed">Получатель</label>
+                            <input type="text" name="messageFor" class="form-control" id="inputAddressed" placeholder="Введите логин получателя">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body">
+                    <label for="inputFilter">Фильтр по отправителю</label>
+                    <form class = "form-inline" method="get" action="/main">
+                        <div class="form-group">
+                            <input type="text" name="filter" class="form-control" id="inputFilter" placeholder="Введите фильтр" value="${filter?ifExists}">
+                        </div>
+                        <button type="submit" class="btn btn-primary ml-3">Отфильтровать</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-<#else> No messages
-</#list>
+</div>
+<div class="accordion mt-3" id="accordionExample">
+    <#list messages as message>
+
+    <div class="card">
+        <div class="card-header" id="heading${message.id}">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse${message.id}" aria-expanded="false" aria-controls="collapse${message.id}">
+                    <strong>${message.authorName}</strong>
+                    <i>${message.tag}</i>
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapse${message.id}" class="collapse" aria-labelledby="heading${message.id}"  data-parent="#accordionExample">
+            <div class="card-body">
+                <span>${message.text}</span>
+            </div>
+        </div>
+    </div>
+    <#else> No messages
+    </#list>
+</div>
 </@c.page>

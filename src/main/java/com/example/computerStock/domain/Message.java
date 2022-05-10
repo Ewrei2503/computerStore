@@ -8,6 +8,8 @@ import javax.persistence.criteria.Fetch;
 public class Message {
 
 
+
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
@@ -16,15 +18,26 @@ public class Message {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
+    private String messageFor;
 
-    public Message(String text, String tag, User user) {
+    public Message(String text, String tag, User user, String messageFor) {
         this.text = text;
         this.tag = tag;
         this.author = user;
+        this.messageFor = messageFor;
     }
 
     public Message() {
     }
+
+    public String getMessageFor() {
+        return messageFor;
+    }
+
+    public void setMessageFor(String messageFor) {
+        this.messageFor = messageFor;
+    }
+
     public String getAuthorName(){
         return author != null ? author.getUsername() : "<none>";
     }

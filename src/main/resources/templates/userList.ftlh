@@ -21,4 +21,6 @@
         </#list>
         </tbody>
     </table>
+
+    <a href="/registration"> Add new user</a>
 </@c.page>
