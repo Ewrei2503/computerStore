@@ -7,11 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.Map;
+
 
 @Controller
 public class MainController {
@@ -39,16 +42,25 @@ public class MainController {
     @PostMapping("/main")
     public String add(
             @AuthenticationPrincipal User user,
-            @RequestParam String text,
-            @RequestParam String tag,
-            @RequestParam String messageFor,
-            Map<String, Object> model
+            @Valid Message message,
+            BindingResult bindingResult,
+            Model model
     ){
-        Message message = new Message(text,tag, user, messageFor);
-        messageRepo.save(message);
+        if(bindingResult.hasErrors()){
+            Map<String, String> errorMap = ControllerUtils.getErrors(bindingResult);
+            model.mergeAttributes(errorMap);
+            model.addAttribute("message",message);
+        } else {
+            message.setAuthor(user);
+            messageRepo.save(message);
+        }
+        model.addAttribute("message", null);
         Iterable<Message> messages = messageRepo.findByMessageFor( user.getUsername());
-        model.put("messages",messages);
+        model.addAttribute("messages",messages);
         return "main";
     }
+
+
+
 
 }

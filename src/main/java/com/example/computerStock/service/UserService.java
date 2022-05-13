@@ -1,13 +1,14 @@
 package com.example.computerStock.service;
 
-import org.springframework.util.StringUtils;
 import com.example.computerStock.domain.Role;
 import com.example.computerStock.domain.User;
 import com.example.computerStock.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -18,16 +19,24 @@ import java.util.stream.Collectors;
 public class UserService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepo.findByUsername(username);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, LockedException
+    {
+        User user = userRepo.findByUsername(username);
+        if(user == null){
+            throw new LockedException("Пользователь не найден!");
+        }
+        return user;
     }
 
     public boolean addUser(User user){
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
         if(userFromDb != null) return false;
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Collections.singleton(Role.USER));
         userRepo.save(user);
         return true;
@@ -51,6 +60,7 @@ public class UserService implements UserDetailsService {
                 user.getRoles().add(Role.valueOf(key));
             }
         }
+        userRepo.save(user);
     }
 
     public void updateProfile(User user, String password) {

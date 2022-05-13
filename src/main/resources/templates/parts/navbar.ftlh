@@ -19,6 +19,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/user">Пользователи</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/product">Товар</a>
+                </li>
             </#if>
 
         </ul>

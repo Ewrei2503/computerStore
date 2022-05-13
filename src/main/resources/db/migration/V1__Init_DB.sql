@@ -1,5 +1,5 @@
 create table hibernate_sequence (next_val bigint) engine=InnoDB;
-insert into hibernate_sequence values ( 1 );
+insert into hibernate_sequence values ( 2 );
 create table message(
     id bigint not null,
     message_for varchar(255),
