@@ -18,4 +18,35 @@ public class Processor extends Product{
         this.thread = thread;
         this.clock = clock;
     }
+
+    public Processor(Product prod, Integer cores, Integer thread, Integer clock) {
+        super(prod);
+        this.cores = cores;
+        this.thread = thread;
+        this.clock = clock;
+    }
+
+    public Integer getCores() {
+        return cores;
+    }
+
+    public void setCores(Integer cores) {
+        this.cores = cores;
+    }
+
+    public Integer getThread() {
+        return thread;
+    }
+
+    public void setThread(Integer thread) {
+        this.thread = thread;
+    }
+
+    public Integer getClock() {
+        return clock;
+    }
+
+    public void setClock(Integer clock) {
+        this.clock = clock;
+    }
 }

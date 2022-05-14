@@ -23,6 +23,11 @@ public class Videocard extends Product{
         this.memory = memory;
         this.clock = clock;
     }
+    public Videocard(Product prod, Integer memory, Integer clock){
+        super(prod);
+        this.memory = memory;
+        this.clock = clock;
+    }
 
     public Integer getMemory() {
         return memory;

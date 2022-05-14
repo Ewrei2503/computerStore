@@ -7,17 +7,21 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name = "product_id")
 public class Drive extends Product{
     private Integer memory;
-    private Integer clock;
     private Boolean typeDrive;
 
     public Drive() {
         super();
     }
 
-    public Drive(String company, String model, String type, Integer mem, Integer clock, Boolean type1) {
+    public Drive(String company, String model, String type, Integer mem, Boolean typeDrive) {
         super(company, model, type);
         this.memory = mem;
-        this.clock = clock;
+        this.typeDrive = typeDrive;
+    }
+
+    public Drive(Product prod, Integer memory, Boolean typeDrive) {
+        super(prod);
+        this.memory = memory;
         this.typeDrive = typeDrive;
     }
 
@@ -27,14 +31,6 @@ public class Drive extends Product{
 
     public void setMem(Integer mem) {
         this.memory = mem;
-    }
-
-    public Integer getClock() {
-        return clock;
-    }
-
-    public void setClock(Integer clock) {
-        this.clock = clock;
     }
 
     public Boolean getTypeDrive() {

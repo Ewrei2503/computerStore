@@ -48,4 +48,8 @@ public class ProductService {
     public void addProduct(Motherboard motherboard) {
         motherboardRepo.save(motherboard);
     }
+
+    public void deleteProduct(Long id){
+        productRepo.removeById(id);
+    }
 }

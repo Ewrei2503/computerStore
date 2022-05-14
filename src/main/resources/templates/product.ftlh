@@ -21,9 +21,14 @@
                 <td>${product.company}</td>
                 <td>${product.model}</td>
                 <td>${product.type}</td>
-                <td><a href="/product/${product.id}">Изменить</a></td>
-                <td> <a href="/user/${product.id}">Детали</a></td>
-                <td><button type="button" method="post"  class="btn btn-danger">Удалить</button></td>
+                <td><a href="/product/${product.id}/edit">Изменить</a></td>
+                <td> <a href="/user/${product.id}/detail">Детали</a></td>
+                <td>
+                    <form method="post" action="/product/${product.id}/delete">
+                        <input type="hidden" name="_csrf" value = "${_csrf.token}"/>
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </td>
             </tr>
         </#list>
         </tbody>

@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/product")
@@ -61,7 +58,7 @@ public class ProductController {
                 productService.addProduct(ram);
                 return "redirect:/product";
             case "drive":
-                Drive drive = new Drive(company,model,type,memory,clock,typeDrive);
+                Drive drive = new Drive(company,model,type,memory,typeDrive);
                 productService.addProduct(drive);
                 return "redirect:/product";
             case "motherboard":
@@ -71,4 +68,64 @@ public class ProductController {
         }
         return "redirect:/product";
     }
+
+    @PostMapping("/{id}/delete")
+    public String deleteProduct(
+            @PathVariable(value = "id") Long id,
+            Model model
+    ){
+        productService.deleteProduct(id);
+        model.addAttribute("product", productService.findAll());
+        return "redirect:/product";
+    }
+
+    @GetMapping("/{product}/edit")
+    public String editProduct(
+            @PathVariable(value = "product") Product product,
+            Model model
+    ){
+        model.addAttribute("product", product);
+        return "productEdit";
+    }
+
+    @PostMapping("/{product}/edit")
+    public String saveProduct(
+            @PathVariable(value = "product") Product product,
+            @RequestParam(required = false) String company,
+            @RequestParam(required = false) String type,
+            @RequestParam(required = false) String model,
+            @RequestParam(required = false) Integer memory,
+            @RequestParam(required = false) Integer clock,
+            @RequestParam(required = false) Integer cores,
+            @RequestParam(required = false) Integer thread,
+            @RequestParam(required = false) String socket,
+            @RequestParam(required = false) Boolean typeDrive
+    ){
+        product.setCompany(company);
+        product.setModel(model);
+        switch(product.getType()){
+            case "videocard":
+                Videocard vid = new Videocard(product,memory,clock);
+                productService.addProduct(vid);
+                return "redirect:/product";
+            case "processor":
+                Processor proc = new Processor(product,cores,thread,clock);
+                productService.addProduct(proc);
+                return "redirect:/product";
+            case "ram":
+                Ram ram = new Ram(product,memory,clock);
+                productService.addProduct(ram);
+                return "redirect:/product";
+            case "drive":
+                Drive drive = new Drive(product,memory,typeDrive);
+                productService.addProduct(drive);
+                return "redirect:/product";
+            case "motherboard":
+                Motherboard motherboard = new Motherboard(product,socket);
+                productService.addProduct(motherboard);
+                return "redirect:/product";
+        }
+        return "redirect:/product";
+    }
 }
+

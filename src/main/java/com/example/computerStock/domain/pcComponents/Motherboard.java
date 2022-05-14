@@ -16,6 +16,11 @@ public class Motherboard extends Product{
     public Motherboard() {
     }
 
+    public Motherboard(Product prod, String socket) {
+        super(prod);
+        this.socket = socket;
+    }
+
     public String getSocket() {
         return socket;
     }

@@ -18,6 +18,12 @@ public class Ram extends Product{
         this.clock = clock;
     }
 
+    public Ram(Product prod, Integer memory, Integer clock) {
+        super(prod);
+        this.memory = memory;
+        this.clock = clock;
+    }
+
     public Integer getMemory() {
         return memory;
     }
