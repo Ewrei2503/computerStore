@@ -35,6 +35,7 @@ public class ProductController {
             @RequestParam String company,
             @RequestParam String model,
             @RequestParam String type,
+            @RequestParam Double price,
             @RequestParam(required = false) Integer memory,
             @RequestParam(required = false) Integer clock,
             @RequestParam(required = false) Integer cores,
@@ -42,27 +43,27 @@ public class ProductController {
             @RequestParam(required = false) String socket,
             @RequestParam(required = false) Boolean typeDrive
     ){
-        Product prod = new Product(company,model,type);
+        Product prod = new Product(company,model,type,price);
         if(!productService.checkProduct(prod)) return "createProduct";
         switch(prod.getType()){
             case "videocard":
-                Videocard vid = new Videocard(company,model,type,memory,clock);
+                Videocard vid = new Videocard(company,model,type,memory,clock, price);
                 productService.addProduct(vid);
                 return "redirect:/product";
             case "processor":
-                Processor proc = new Processor(company,model,type,cores,thread,clock);
+                Processor proc = new Processor(company,model,type,cores,thread,clock, price);
                 productService.addProduct(proc);
                 return "redirect:/product";
             case "ram":
-                Ram ram = new Ram(company,model,type,memory,clock);
+                Ram ram = new Ram(company,model,type,memory,clock, price);
                 productService.addProduct(ram);
                 return "redirect:/product";
             case "drive":
-                Drive drive = new Drive(company,model,type,memory,typeDrive);
+                Drive drive = new Drive(company,model,type,memory,typeDrive, price);
                 productService.addProduct(drive);
                 return "redirect:/product";
             case "motherboard":
-                Motherboard motherboard = new Motherboard(company,model,type,socket);
+                Motherboard motherboard = new Motherboard(company,model,type,socket,price);
                 productService.addProduct(motherboard);
                 return "redirect:/product";
         }
@@ -92,7 +93,7 @@ public class ProductController {
     public String saveProduct(
             @PathVariable(value = "product") Product product,
             @RequestParam(required = false) String company,
-            @RequestParam(required = false) String type,
+            @RequestParam(required = false) Double price,
             @RequestParam(required = false) String model,
             @RequestParam(required = false) Integer memory,
             @RequestParam(required = false) Integer clock,
@@ -102,6 +103,7 @@ public class ProductController {
             @RequestParam(required = false) Boolean typeDrive
     ){
         product.setCompany(company);
+        product.setPrice(price);
         product.setModel(model);
         switch(product.getType()){
             case "videocard":

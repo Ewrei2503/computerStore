@@ -14,15 +14,19 @@ public class Product {
     private String company;
     private String model;
     private String type;
+    private Integer num;
+    private Double price;
 
 
     public Product() {
     }
 
-    public Product(String company, String model, String type) {
+    public Product(String company, String model, String type, Double price) {
         this.company = company;
         this.model = model;
         this.type = type;
+        num = 0;
+        this.price = price;
     }
 
     public Product(Product prod) {
@@ -30,7 +34,12 @@ public class Product {
         this.company = prod.getCompany();
         this.model = prod.getModel();
         this.type = prod.getType();
+        num = 0;
+        this.price = prod.getPrice();
     }
+
+
+
 
     public Boolean isVideocard(){
         return type.equals("videocard");
@@ -51,7 +60,6 @@ public class Product {
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }
@@ -59,7 +67,6 @@ public class Product {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -67,7 +74,6 @@ public class Product {
     public String getCompany() {
         return company;
     }
-
     public void setCompany(String company) {
         this.company = company;
     }
@@ -75,8 +81,21 @@ public class Product {
     public String getModel() {
         return model;
     }
-
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

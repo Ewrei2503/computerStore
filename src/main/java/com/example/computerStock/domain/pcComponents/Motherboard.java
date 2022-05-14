@@ -8,18 +8,21 @@ import javax.persistence.PrimaryKeyJoinColumn;
 public class Motherboard extends Product{
 
     private String socket;
-    public Motherboard(String company, String model, String type, String socket) {
-        super(company, model, type);
+
+    public Motherboard(Product prod, String socket) {
+        super(prod);
+        this.socket = socket;
+    }
+
+    public Motherboard(String company, String model, String type, String socket, Double price) {
+        super(company, model, type, price);
         this.socket = socket;
     }
 
     public Motherboard() {
     }
 
-    public Motherboard(Product prod, String socket) {
-        super(prod);
-        this.socket = socket;
-    }
+
 
     public String getSocket() {
         return socket;

@@ -37,6 +37,10 @@
                             <label for="exampleFormControlInput1">Частота</label>
                             <input type="text" name="clock" class="form-control" id="exampleFormControlInput1" placeholder="Введите частоту">
                         </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Цена</label>
+                            <input type="text" name="price" class="form-control" id="exampleFormControlInput1" placeholder="Введите стоимость">
+                        </div>
                         <button class="btn btn-primary" type="submit">Добавить видеокарту</button>
                     </form>
                 </div>
@@ -96,6 +100,10 @@
                             <label for="exampleFormControlInput1">Частота</label>
                             <input type="text" name="clock" class="form-control" id="exampleFormControlInput1" placeholder="Введите частоту">
                         </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Цена</label>
+                            <input type="text" name="price" class="form-control" id="exampleFormControlInput1" placeholder="Введите стоимость">
+                        </div>
                         <button class="btn btn-primary" type="submit">Добавить процессор</button>
                     </form>
                 </div>
@@ -133,6 +141,10 @@
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Сокет</label>
                             <input type="text" name="socket" class="form-control" id="exampleFormControlInput1" placeholder="Введите сокет">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Цена</label>
+                            <input type="text" name="price" class="form-control" id="exampleFormControlInput1" placeholder="Введите стоимость">
                         </div>
                         <button class="btn btn-primary" type="submit">Добавить материнскую плату</button>
                     </form>
@@ -179,6 +191,10 @@
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Частота</label>
                             <input type="text" name="clock" class="form-control" id="exampleFormControlInput1" placeholder="Введите частоту">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Цена</label>
+                            <input type="text" name="price" class="form-control" id="exampleFormControlInput1" placeholder="Введите стоимость">
                         </div>
                         <button class="btn btn-primary" type="submit">Добавить оперативную плату</button>
                     </form>
@@ -239,6 +255,10 @@
                                     SSD
                                 </label>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Цена</label>
+                            <input type="text" name="price" class="form-control" id="exampleFormControlInput1" placeholder="Введите стоимость">
                         </div>
                         <button class="btn btn-primary mt-3" type="submit">Добавить диск</button>
                     </form>

@@ -12,8 +12,8 @@ public class Ram extends Product{
     public Ram() {
     }
 
-    public Ram(String company, String model, String type, Integer memory, Integer clock) {
-        super(company, model, type);
+    public Ram(String company, String model, String type, Integer memory, Integer clock, Double price) {
+        super(company, model, type, price);
         this.memory = memory;
         this.clock = clock;
     }

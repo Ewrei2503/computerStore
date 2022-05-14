@@ -13,8 +13,8 @@ public class Drive extends Product{
         super();
     }
 
-    public Drive(String company, String model, String type, Integer mem, Boolean typeDrive) {
-        super(company, model, type);
+    public Drive(String company, String model, String type, Integer mem, Boolean typeDrive, Double price) {
+        super(company, model, type, price);
         this.memory = mem;
         this.typeDrive = typeDrive;
     }
