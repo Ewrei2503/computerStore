@@ -29,6 +29,10 @@ public class User implements UserDetails {
         return roles.contains(Role.ADMIN);
     }
 
+    public boolean isZavsklad(){
+        return roles.contains(Role.ZAVSKLAD);
+    }
+
     public Long getId() {
         return id;
     }

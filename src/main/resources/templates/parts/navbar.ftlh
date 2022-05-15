@@ -23,7 +23,11 @@
                     <a class="nav-link" href="/product">Товар</a>
                 </li>
             </#if>
-
+            <#if isZavsklad>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/order">Заказы</a>
+                </li>
+            </#if>
         </ul>
 
         <#if user??>

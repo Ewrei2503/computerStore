@@ -1,0 +1,32 @@
+<#import "parts/common.ftlh" as c>
+
+<@c.page>
+    <div class="float-right mb-4"><a href="/order/orderFromSupplier"> Заказ новой продукции</a></div>
+    <form method="post" action="order/create">
+        <input type="hidden" name="_csrf" value = "${_csrf.token}"/>
+        <input type="hidden" name="type" value = "false"/>
+        <button type="submit" class="btn btn-secondary">Добавить заказ</button>
+    </form>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Исполнитель</th>
+            <th scope="col">Тип исполнения</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <#list orders as order>
+            <tr>
+                <th scope="row">${order?counter}</th>
+                <td><#if order.wait>Ожидание подтверждения исполнителем<#else>В работе</#if></td>
+                <td><#if order.type>Приход<#else>Отход</#if></td>
+                <td><a href="/order/${order.id}">Детали</a></td>
+                <td><a href="/order/${order.id}">Удалить</a></td>
+            </tr>
+        </#list>
+        </tbody>
+    </table>
+</@c.page>

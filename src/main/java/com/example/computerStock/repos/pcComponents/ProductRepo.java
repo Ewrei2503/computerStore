@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ProductRepo extends JpaRepository<Product, Long> {
     Product findProductByModelAndCompany(String model, String company);
 
+    Product findProductById(Long id);
+
     @Transactional
     void removeById(Long id);
 }
