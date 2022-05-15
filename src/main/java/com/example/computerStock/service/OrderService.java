@@ -2,16 +2,14 @@ package com.example.computerStock.service;
 
 import com.example.computerStock.domain.Order;
 import com.example.computerStock.domain.Position;
-import com.example.computerStock.domain.Role;
-import com.example.computerStock.domain.pcComponents.*;
+import com.example.computerStock.domain.pcComponents.Product;
 import com.example.computerStock.repos.OrderRepo;
 import com.example.computerStock.repos.PositionRepo;
 import com.example.computerStock.repos.pcComponents.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
 
 @Service
 public class OrderService {

@@ -3,8 +3,6 @@ package com.example.computerStock.controller;
 import com.example.computerStock.domain.Order;
 import com.example.computerStock.domain.Position;
 import com.example.computerStock.domain.Supplier;
-import com.example.computerStock.domain.pcComponents.Product;
-import com.example.computerStock.repos.OrderRepo;
 import com.example.computerStock.repos.PositionRepo;
 import com.example.computerStock.repos.SupplierRepo;
 import com.example.computerStock.repos.pcComponents.ProductRepo;
@@ -16,10 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/order")

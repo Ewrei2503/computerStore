@@ -4,7 +4,6 @@ import com.example.computerStock.domain.Supplier;
 import com.example.computerStock.repos.MessageRepo;
 import com.example.computerStock.repos.OrderRepo;
 import com.example.computerStock.repos.SupplierRepo;
-import com.example.computerStock.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
