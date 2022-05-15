@@ -3,7 +3,7 @@ package com.example.computerStock.service;
 import com.example.computerStock.domain.Order;
 import com.example.computerStock.domain.Position;
 import com.example.computerStock.domain.Role;
-import com.example.computerStock.domain.pcComponents.Product;
+import com.example.computerStock.domain.pcComponents.*;
 import com.example.computerStock.repos.OrderRepo;
 import com.example.computerStock.repos.PositionRepo;
 import com.example.computerStock.repos.pcComponents.ProductRepo;
@@ -21,6 +21,9 @@ public class OrderService {
     private PositionRepo positionRepo;
     @Autowired
     private OrderRepo orderRepo;
+
+    @Autowired
+    private ProductService productService;
 
     public boolean checkProduct(Long id){
         Product productFromDb = productRepo.findProductById(id);
@@ -63,5 +66,16 @@ public class OrderService {
             positionRepo.removeById(pos1.getId());
         }
         orderRepo.removeById(order.getId());
+    }
+
+    public void resolveNumbers(Order order) {
+        List<Position> pos = positionRepo.findByOrderId(order.getId());
+        Product prod;
+        for(Position pos1 : pos){
+            prod = productRepo.findProductById(pos1.getProduct().getId());
+            prod.setNum(prod.getNum()+1);
+            productService.addProduct(prod);
+            positionRepo.removeById(pos1.getId());
+        }
     }
 }

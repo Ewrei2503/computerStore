@@ -9,4 +9,6 @@ public interface SupplierRepo extends JpaRepository<Supplier, Long> {
 
     @Transactional
     void deleteSupplierById(Long id);
+
+    Supplier findSupplierById(Long id);
 }

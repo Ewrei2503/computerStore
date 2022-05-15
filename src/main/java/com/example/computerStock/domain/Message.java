@@ -20,6 +20,9 @@ public class Message {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "order_id")
+    private Order order;
     @NotBlank(message = "Введите получателя")
     private String messageFor;
 

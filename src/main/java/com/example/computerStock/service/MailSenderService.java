@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MailSenderService {
     @Autowired
-    private JavaMailSender javaMailSender;
+    private JavaMailSender mailSender;
     @Value("${spring.mail.username}")
     private String username;
 
@@ -21,6 +21,6 @@ public class MailSenderService {
         mailMessage.setSubject(subject);
         mailMessage.setText(message);
 
-        javaMailSender.send(mailMessage);
+        mailSender.send(mailMessage);
     }
 }
