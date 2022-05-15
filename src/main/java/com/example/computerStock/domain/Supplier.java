@@ -15,6 +15,16 @@ public class Supplier{
     private String email;
     private String name;
 
+
+
+    public Supplier() {
+    }
+
+    public Supplier(String email, String name) {
+        this.email = email;
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
@@ -29,5 +39,13 @@ public class Supplier{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

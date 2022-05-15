@@ -22,6 +22,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/product">Товар</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/supplier">Поставщики</a>
+                </li>
             </#if>
             <#if isZavsklad>
                 <li class="nav-item active">
