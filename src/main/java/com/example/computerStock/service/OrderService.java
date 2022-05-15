@@ -50,4 +50,18 @@ public class OrderService {
     public List<Position> findOrderData(Order order) {
         return positionRepo.findByOrderId(order.getId());
     }
+
+    public void deletePosition(Position pos){
+        Product prod = productRepo.findProductById(pos.getProduct().getId());
+        prod.setNum(prod.getNum()+1);
+        positionRepo.removeById(pos.getId());
+    }
+
+    public void deleteOrder(Order order) {
+        List<Position> pos = positionRepo.findByOrderId(order.getId());
+        for(Position pos1 : pos){
+            positionRepo.removeById(pos1.getId());
+        }
+        orderRepo.removeById(order.getId());
+    }
 }

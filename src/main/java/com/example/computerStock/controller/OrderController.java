@@ -1,6 +1,7 @@
 package com.example.computerStock.controller;
 
 import com.example.computerStock.domain.Order;
+import com.example.computerStock.domain.Position;
 import com.example.computerStock.repos.OrderRepo;
 import com.example.computerStock.repos.PositionRepo;
 import com.example.computerStock.service.OrderService;
@@ -63,6 +64,23 @@ public class OrderController {
             @RequestParam Long id
     ){
         orderService.addPosition(num, order, id);
+        return "redirect:/order/{order}";
+    }
+
+    @PostMapping("{order}/{position}/delete")
+    public String deletePosition(
+            @PathVariable Order order,
+            @PathVariable Position position
+    ){
+        orderService.deletePosition(position);
+        return "redirect:/order/{order}";
+    }
+
+    @PostMapping("{order}/delete")
+    public String deleteOrder(
+            @PathVariable Order order
+    ){
+        orderService.deleteOrder(order);
         return "redirect:/order";
     }
 }

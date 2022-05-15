@@ -23,6 +23,7 @@ public class ProductController {
         return "product";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("createProduct")
     public String createProduct(
             Model model
@@ -30,6 +31,7 @@ public class ProductController {
         return "createProduct";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("createProduct")
     public String addProduct(
             @RequestParam String company,
@@ -70,6 +72,7 @@ public class ProductController {
         return "redirect:/product";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/{id}/delete")
     public String deleteProduct(
             @PathVariable(value = "id") Long id,
@@ -80,6 +83,7 @@ public class ProductController {
         return "redirect:/product";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/{product}/edit")
     public String editProduct(
             @PathVariable(value = "product") Product product,
@@ -89,6 +93,7 @@ public class ProductController {
         return "productEdit";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/{product}/edit")
     public String saveProduct(
             @PathVariable(value = "product") Product product,

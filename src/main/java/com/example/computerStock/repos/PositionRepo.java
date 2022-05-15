@@ -5,6 +5,7 @@ import com.example.computerStock.domain.Position;
 import com.example.computerStock.domain.pcComponents.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,4 +14,10 @@ public interface PositionRepo extends JpaRepository<Position, Long> {
     Position countCustomersByType(Long id);*/
 
     List<Position> findByOrderId(Long id);
+
+    @Transactional
+    void removeById(Long id);
+
+    @Transactional
+    void deleteAllByOrder(Long id);
 }

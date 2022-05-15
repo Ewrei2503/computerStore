@@ -24,7 +24,12 @@
                 <td><#if order.wait>Ожидание подтверждения исполнителем<#else>В работе</#if></td>
                 <td><#if order.type>Приход<#else>Отход</#if></td>
                 <td><a href="/order/${order.id}">Детали</a></td>
-                <td><a href="/order/${order.id}">Удалить</a></td>
+                <td>
+                    <form method="post" action="/order/${order.id}/delete">
+                        <input type="hidden" name="_csrf" value = "${_csrf.token}"/>
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </td>
             </tr>
         </#list>
         </tbody>

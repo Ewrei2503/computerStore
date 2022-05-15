@@ -37,7 +37,7 @@
                             </#list>
                         </td>
                         <td>
-                            <form method="post" action="/order/{order}/${position}/delete">
+                            <form method="post" action="/order/${order.id}/${position.id}/delete">
                                 <input type="hidden" name="_csrf" value = "${_csrf.token}"/>
                                 <button type="submit" class="btn btn-danger">Удалить</button>
                             </form>
