@@ -37,9 +37,9 @@
                             </#list>
                         </td>
                         <td>
-                            <form method="post" action="/order/${order.id}/${position.id}/delete">
+                            <form method="post" action="/order/${order.id}/${position.id}/delete2">
                                 <input type="hidden" name="_csrf" value = "${_csrf.token}"/>
-                                <button type="submit" class="btn btn-danger">Удалить</button>
+                                <button type="submit" class="btn btn-danger" >Удалить</button>
                             </form>
                         </td>
                     </tr>
@@ -86,7 +86,7 @@
                     <td>${product.num}</td>
                     <td><a href="/product/${product.id}">Детали</a></td>
                     <td>
-                        <form method="post" action="/order/${order.id}/add">
+                        <form method="post" action="/order/${order.id}/add2">
                             <div class="row" >
                                 <div class="form-group">
                                     <input type="text" name="num" class="form-control" id="exampleFormControlInput1" placeholder="Введите количество">

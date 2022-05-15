@@ -89,6 +89,16 @@ public class OrderController {
         return "redirect:/order/{order}";
     }
 
+    @PostMapping("{order}/add2")
+    public String addPosition2(
+            @RequestParam Integer num,
+            @PathVariable Order order,
+            @RequestParam Long id
+    ){
+        orderService.addPosition(num, order, id);
+        return "redirect:/order/{order}";
+    }
+
     @PostMapping("{order}/{position}/delete")
     public String deletePosition(
             @PathVariable Order order,
@@ -96,6 +106,15 @@ public class OrderController {
     ){
         orderService.deletePosition(position);
         return "redirect:/order/{order}";
+    }
+
+    @PostMapping("{order}/{position}/delete2")
+    public String deletePosition2(
+            @PathVariable Order order,
+            @PathVariable Position position
+    ){
+        orderService.deletePosition(position);
+        return "redirect:/order/{order}/toSup";
     }
 
     @PostMapping("{order}/delete")

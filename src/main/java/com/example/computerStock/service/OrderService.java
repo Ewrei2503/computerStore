@@ -75,7 +75,7 @@ public class OrderService {
             prod = productRepo.findProductById(pos1.getProduct().getId());
             prod.setNum(prod.getNum()+1);
             productService.addProduct(prod);
-            positionRepo.removeById(pos1.getId());
         }
+        deleteOrder(order);
     }
 }
