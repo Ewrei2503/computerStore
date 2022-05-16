@@ -65,10 +65,10 @@
 <div class="accordion mt-3" id="accordionExample">
     <#list messages as message>
 
-    <div class="card">
+    <div class="card" >
         <div class="card-header" id="heading${message.id}">
             <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse${message.id}" aria-expanded="false" aria-controls="collapse${message.id}">
+                <button class="btn btn-link collapsed <#if message.order??>text-warning</#if>" type="button" data-toggle="collapse" data-target="#collapse${message.id}" aria-expanded="false" aria-controls="collapse${message.id}">
                     <strong>${message.authorName}</strong>
                     <i>${message.tag}</i>
                 </button>
@@ -77,7 +77,19 @@
 
         <div id="collapse${message.id}" class="collapse" aria-labelledby="heading${message.id}"  data-parent="#accordionExample">
             <div class="card-body">
-                <span>${message.text}</span>
+                    <div>
+                        <span>${message.text}</span>
+                    </div>
+                    <#if message.order??>
+                        <div class="mt-4">
+                            <form method="post" action="/main/accept/${message.order.id}">
+                                <input type="hidden" name="_csrf" value = "${_csrf.token}"/>
+                                <input type="hidden" name="msgId" value="${message.id}">
+                                <input type="hidden" name="id" value="${message.order.id}">
+                                <button class="btn btn-link-primary" type="submit"> Подтвердить</button>
+                            </form>
+                        </div>
+                    </#if>
             </div>
         </div>
     </div>

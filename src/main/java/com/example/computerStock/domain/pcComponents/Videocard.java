@@ -18,8 +18,8 @@ public class Videocard extends Product{
         this.clock = clock;
     }
 
-    public Videocard(String company, String model, String type, Integer memory, Integer clock, Double price) {
-        super(company, model, type, price);
+    public Videocard(String company, String model, String type, Integer memory, Integer clock) {
+        super(company, model, type);
         this.memory = memory;
         this.clock = clock;
     }

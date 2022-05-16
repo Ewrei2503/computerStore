@@ -22,7 +22,7 @@
                 <td>${product.model}</td>
                 <td>${product.type}</td>
                 <td><a href="/product/${product.id}/edit">Изменить</a></td>
-                <td> <a href="/user/${product.id}/detail">Детали</a></td>
+                <td> <a href="/product/${product.id}/detail">Детали</a></td>
                 <td>
                     <form method="post" action="/product/${product.id}/delete">
                         <input type="hidden" name="_csrf" value = "${_csrf.token}"/>

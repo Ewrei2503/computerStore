@@ -30,6 +30,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/order">Заказы</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/quest">Задания</a>
+                </li>
             </#if>
         </ul>
 

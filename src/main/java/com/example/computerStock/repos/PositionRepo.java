@@ -15,4 +15,6 @@ public interface PositionRepo extends JpaRepository<Position, Long> {
 
     @Transactional
     void deleteAllByOrder(Long id);
+
+    List<Position> findByProductId(Long id);
 }

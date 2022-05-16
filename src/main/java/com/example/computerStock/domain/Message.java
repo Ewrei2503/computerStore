@@ -33,6 +33,14 @@ public class Message {
         this.messageFor = messageFor;
     }
 
+    public Message(String text, String tag, User author, Order order, String messageFor) {
+        this.text = text;
+        this.tag = tag;
+        this.author = author;
+        this.order = order;
+        this.messageFor = messageFor;
+    }
+
     public Message() {
     }
 
@@ -77,5 +85,13 @@ public class Message {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

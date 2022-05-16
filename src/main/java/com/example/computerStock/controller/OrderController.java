@@ -79,7 +79,7 @@ public class OrderController {
             @PathVariable Order order,
             @RequestParam Long id
     ){
-        orderService.addPosition(num, order, id);
+        orderService.addPosition(num, order, id, false);
         return "redirect:/order/{order}";
     }
 
@@ -89,7 +89,7 @@ public class OrderController {
             @PathVariable Order order,
             @RequestParam Long id
     ){
-        orderService.addPosition(num, order, id);
+        orderService.addPosition(num, order, id, true);
         return "redirect:/order/{order}";
     }
 

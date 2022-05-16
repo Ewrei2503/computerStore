@@ -8,6 +8,7 @@ create table message(
     tag varchar(255),
     text varchar(2048) not null,
     user_id bigint,
+    order_id bigint,
     primary key (id)
 )engine=InnoDB;
 
@@ -22,12 +23,6 @@ create table usr(
     username varchar(255) not null,
     primary key (id)
 )engine=InnoDB;
-
-create table brak(
-    by_warranty bit,
-    sold_position_id bigint not null,
-    primary key (sold_position_id)
-) engine=InnoDB;
 
 create table drive (
     memory integer,
@@ -44,7 +39,7 @@ create table motherboard (
 
 create table orders (
     id bigint not null,
-    type bit, wait bit,
+    type bit,
     user_id bigint,
     primary key (id)
 ) engine=InnoDB;
@@ -82,9 +77,9 @@ create table ram (
 ) engine=InnoDB;
 
 create table sold (
-    warranty bit,
-    position_id bigint not null,
-    primary key (position_id)
+    id bigint not null auto_increment,
+    product_id bigint,
+    primary key (id)
 ) engine=InnoDB;
 
 create table supplier (
@@ -103,9 +98,13 @@ create table videocard (
 
 
 
-alter table brak
-    add constraint brak_sold_fk
-        foreign key (sold_position_id) references sold (position_id);
+alter table message
+    add constraint message_orders_fk
+        foreign key (order_id) references orders (id);
+
+alter table sold
+    add constraint sold_product_fk
+        foreign key (product_id) references product (id);
 
 alter table drive
     add constraint drive_product_fk
@@ -134,10 +133,6 @@ alter table processor
 alter table ram
     add constraint ram_product_fk
         foreign key (product_id) references product (id);
-
-alter table sold
-    add constraint sold_position_fk
-        foreign key (position_id) references position (id);
 
 alter table videocard
     add constraint videocard_product_fk

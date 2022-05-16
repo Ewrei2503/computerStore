@@ -14,7 +14,6 @@ public class Supplier{
     @Email
     private String email;
     private String name;
-    private String activationCode;
 
 
 
@@ -48,13 +47,5 @@ public class Supplier{
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getActivationCode() {
-        return activationCode;
-    }
-
-    public void setActivationCode(String activationCode) {
-        this.activationCode = activationCode;
     }
 }

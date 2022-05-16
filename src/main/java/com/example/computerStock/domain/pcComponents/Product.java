@@ -15,18 +15,16 @@ public class Product {
     private String model;
     private String type;
     private Integer num;
-    private Double price;
 
 
     public Product() {
     }
 
-    public Product(String company, String model, String type, Double price) {
+    public Product(String company, String model, String type) {
         this.company = company;
         this.model = model;
         this.type = type;
         num = 0;
-        this.price = price;
     }
 
     public Product(Product prod) {
@@ -35,7 +33,6 @@ public class Product {
         this.model = prod.getModel();
         this.type = prod.getType();
         num = 0;
-        this.price = prod.getPrice();
     }
 
 
@@ -92,10 +89,4 @@ public class Product {
         this.num = num;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-    public void setPrice(Double price) {
-        this.price = price;
-    }
 }

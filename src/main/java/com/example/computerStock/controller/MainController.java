@@ -1,14 +1,17 @@
 package com.example.computerStock.controller;
 
 import com.example.computerStock.domain.Message;
+import com.example.computerStock.domain.Order;
 import com.example.computerStock.domain.User;
 import com.example.computerStock.repos.MessageRepo;
+import com.example.computerStock.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,6 +23,9 @@ import java.util.Map;
 public class MainController {
     @Autowired
     private MessageRepo messageRepo;
+
+    @Autowired
+    private OrderService orderService;
 
     @GetMapping("/")
     public String greeting( Map<String, Object> model) {
@@ -58,6 +64,15 @@ public class MainController {
         Iterable<Message> messages = messageRepo.findByMessageFor( user.getUsername());
         model.addAttribute("messages",messages);
         return "main";
+    }
+    @PostMapping("/main/accept/{order}")
+    public String accept(
+            @RequestParam Long msgId,
+            @RequestParam Long id
+    ){
+        messageRepo.removeMessageById(msgId);
+        orderService.acceptOrder(id);
+        return "redirect:/main";
     }
 
 

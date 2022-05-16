@@ -31,7 +31,7 @@
         <#list orders as order>
             <tr>
                 <th scope="row">${order?counter}</th>
-                <td><#if order.wait>Ожидание подтверждения исполнителем<#else>В работе</#if></td>
+                <td><#if order.executor??>В работе<#else>Ожидание подтверждения исполнителем</#if></td>
                 <td><#if order.type>Приход<#else>Отход</#if></td>
                 <td><a href="<#if order.type>/order/${order.id}/toSup<#else>/order/${order.id}</#if>">Детали</a></td>
                 <td>
@@ -43,5 +43,6 @@
             </tr>
         </#list>
         </tbody>
+    </table>
 
 </@c.page>

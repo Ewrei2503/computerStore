@@ -13,9 +13,9 @@ public class Drive extends Product{
         super();
     }
 
-    public Drive(String company, String model, String type, Integer mem, Boolean typeDrive, Double price) {
-        super(company, model, type, price);
-        this.memory = mem;
+    public Drive(String company, String model, String type, Integer memory, Boolean typeDrive) {
+        super(company, model, type);
+        this.memory = memory;
         this.typeDrive = typeDrive;
     }
 
@@ -25,11 +25,11 @@ public class Drive extends Product{
         this.typeDrive = typeDrive;
     }
 
-    public Integer getMem() {
+    public Integer getMemory() {
         return memory;
     }
 
-    public void setMem(Integer mem) {
+    public void setMemory(Integer mem) {
         this.memory = mem;
     }
 

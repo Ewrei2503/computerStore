@@ -6,10 +6,31 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class Sold implements Serializable {
+public class Sold{
     @Id
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "position_id", referencedColumnName = "id")
-    private Position position;
-    private Boolean warranty;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    public Sold() {
+    }
+
+    public Sold(Position position, Product product) {
+        this.product = product;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

@@ -115,10 +115,6 @@
                 </div>
             </div>
         </#if>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Цена</label>
-            <input type="text" name="price" class="form-control" id="exampleFormControlInput1" placeholder="Введите стоимость">
-        </div>
         <button class="btn btn-primary <#if product.isDrive()>mt-3</#if>" type="submit">Добавить <#if product.isMotherboard()>материнскую плату<#elseif product.isDrive()>диск<#elseif product.isProcessor()>процессор<#elseif product.isRam()>оперативную память<#else>видеокарту</#if></button>
     </form>
 </@c.page>

@@ -14,8 +14,8 @@ public class Motherboard extends Product{
         this.socket = socket;
     }
 
-    public Motherboard(String company, String model, String type, String socket, Double price) {
-        super(company, model, type, price);
+    public Motherboard(String company, String model, String type, String socket) {
+        super(company, model, type);
         this.socket = socket;
     }
 

@@ -12,8 +12,8 @@ public class Processor extends Product{
     public Processor() {
     }
 
-    public Processor(String company, String model, String type, Integer cores, Integer thread, Integer clock, Double price) {
-        super(company, model, type, price);
+    public Processor(String company, String model, String type, Integer cores, Integer thread, Integer clock) {
+        super(company, model, type);
         this.cores = cores;
         this.thread = thread;
         this.clock = clock;

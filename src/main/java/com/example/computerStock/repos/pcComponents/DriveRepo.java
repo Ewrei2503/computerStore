@@ -4,4 +4,5 @@ import com.example.computerStock.domain.pcComponents.Drive;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DriveRepo extends JpaRepository<Drive, Long> {
+    Drive findDriveById(Long id);
 }
